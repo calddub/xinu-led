@@ -4,21 +4,22 @@
 //devcall ledopen( int deviceid ) {
 devcall ledputc( int devid, char state ) {
 
-	if( ledobj[devid] == 0 ) {
+	if( ledtab[devid].openhndl == 0 ) {
 		return SYSERR;
 	}
+
 	switch( state ) {
 		case 'Y':
-			ledobj[devid].state = 1; // Start in the of position
+			ledtab[devid].state = 1; // Start in the of position
 			break;
 		case 'N':
-			ledobj[devid].state = 0; // Start in the of position
+			ledtab[devid].state = 0; // Start in the of position
 			break;
 		default:
 			return SYSERR;
 	}
 
-	vGalileoFlashLEDUsingLegacyGPIO(ledobj[devid].state);
+	vGalileoFlashLEDUsingLegacyGPIO(ledtab[devid].state);
 	return;
 }
 

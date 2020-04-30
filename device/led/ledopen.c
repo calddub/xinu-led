@@ -9,6 +9,8 @@
 //devcall ledopen( int deviceid ) {
 devcall ledopen( ) {
 
+	int32 defdev = 0;  // Only 1 LED device, we're calling dev=0
+
 	// variables
 	// 1) Check if device already open
 	// 2a - T) Return SYSERR
@@ -16,13 +18,13 @@ devcall ledopen( ) {
 	//         initialize to LED off (?)
 	//         return device ID
 	//
-	if( ledobj[0] == 1 ) {
+	if( ledtab[0].openhndl == 1 ) {
 		return SYSERR;
 	}
 
-	ledobj[0] = 1;  // open the device
-	ledobj[0].state = 0; // Start in the of position
-	vGalileoFlashLEDUsingLegacyGPIO(0);  // FOrce off on open
-	return 0;  // send back th device ID (only 1 LED, and it's ID == 0)
+	ledtab[defdev].openhndl = 1;  // open the device
+	ledtab[defdev].state = 0; // Start in the of position
+	vGalileoFlashLEDUsingLegacyGPIO(0);  // Force off on open
+	return defdev;  // send back th device ID (only 1 LED, and it's ID == 0)
 }
 

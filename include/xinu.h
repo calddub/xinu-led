@@ -43,3 +43,4 @@
 #include <setjmp.h>
 #include <uecho.h>
 #include <errors.h>
+#include <led.h>   // Add in our spiffy new LED device header

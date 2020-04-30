@@ -3,12 +3,12 @@
 
 devcall ledread( int devid, char *str) {
 
-	char tret = ledgetc( devid );
+	char tmpret = ledgetc( devid );
 
-	if( tret == SYSERR ) 
+	if( tmpret == SYSERR ) 
 		return( SYSERR );
 
-	str[0] = tret;
+	str[0] = tmpret;
 	str[1] = '\0';
 
 	return( strlen(str));

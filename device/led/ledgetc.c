@@ -6,10 +6,11 @@ char ledgetc( int devid ) {
 
 	char val;
 
-	if( ledobj[devid] == 0 ) {
+	if( ledtab[devid].openhndl == 0 ) {
 		return SYSERR;
 	}
-	switch( ledobj[devid].state ) {
+
+	switch( ledtab[devid].state ) {
 		case 1:
 			val = 'Y';
 			break;
